@@ -1,6 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { Asset, AppLoading } from 'expo';
+import { Provider } from 'react-redux';
+import { persistStore } from 'redux-persist';
+import store from './store';
 
 export default class App extends React.Component {
   constructor(props){
@@ -9,6 +12,10 @@ export default class App extends React.Component {
       isReady: false,
     }
   }
+
+    componentDidMount() {
+        persistStore(store);
+    }
 
   render() {
 
@@ -23,9 +30,11 @@ export default class App extends React.Component {
       }
 
     return (
-      <View style={styles.container}>
-        <Text>Boilerplate tarrel</Text>
-      </View>
+        <Provider store={store}>
+            <View style={styles.container}>
+                <Text>Expo Juantarrel Boilerplate</Text>
+            </View>
+        </Provider>
     );
   }
 
