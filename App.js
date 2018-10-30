@@ -4,6 +4,7 @@ import { Asset, AppLoading } from 'expo';
 import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 import store from './store';
+import AppNavigator from './navigation/AppNavigator';
 
 export default class App extends React.Component {
   constructor(props){
@@ -31,9 +32,7 @@ export default class App extends React.Component {
 
     return (
         <Provider store={store}>
-            <View style={styles.container}>
-                <Text>Expo Juantarrel Boilerplate</Text>
-            </View>
+            <AppNavigator/>
         </Provider>
     );
   }
