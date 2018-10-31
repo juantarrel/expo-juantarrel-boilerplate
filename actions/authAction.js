@@ -36,7 +36,6 @@ export function logout() {
 }
 
 export function loginFetch(email, password) {
-        console.log(`ENTRO ${email} ${password}`);
     return (dispatch) => {
         dispatch(loginRequest(email, password));
         return fetch(AUTH_URL, {
