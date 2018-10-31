@@ -15,27 +15,8 @@ const INIT_STATE = {
     loggedIn: false,
 };
 
-const auth = (state = fromJS(INIT_STATE), action) => {
+const authReducer = (state = fromJS(INIT_STATE), action) => {
     switch (action.type) {
-        case 'FORGOT_PASSWORD_INIT':
-            return state.merge(INIT_STATE);
-        case 'FORGOT_PASSWORD_SUCCESS':
-            return state.merge({
-                error: false,
-                message: action.payload.response,
-                email: action.payload.email,
-            });
-        case 'FORGOT_PASSWORD_FAILURE':
-            return state.merge({
-                error: true,
-                message: action.payload.response,
-            });
-        case 'FORGOT_PASSWORD_END':
-            return state.merge({
-                loading: true,
-                error: false,
-                message: '',
-            });
         case 'SIGNIN_INIT':
             return state.merge(INIT_STATE);
         case 'SIGNIN-REQUEST':
@@ -95,21 +76,9 @@ const auth = (state = fromJS(INIT_STATE), action) => {
                 error: true,
                 message: action.payload.message,
             });
-
-        case 'RESEND_VERIFY_FAILURE':
-            return state.merge({
-                error: true,
-                message: action.payload.response,
-            });
-        case 'RESEND_VERIFY_SUCCESS':
-            return state.merge({
-                error: false,
-                message: action.payload.response,
-            });
-
         default:
             return state;
     }
 };
 
-export default auth;
+export default authReducer;
